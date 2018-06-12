@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark ">  
+  <a class="navbar-brand" href="#">CS Toronto</a>
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Navbar links -->
+  <div class ="collapse navbar-collapse" id="navbarSupportedContent">
+    <!-- Right-side -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+      </li>
+    </ul>
+    <!-- Left-side -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="_authService.loggedIn()" routerLink="/record" routerLinkActive="active">Record</a>
+      </li>  
+      <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">Login</a>
+      <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/register" routerLinkActive="active">Register</a>
+      <a class="nav-link" *ngIf="_authService.loggedIn()" style="cursor:pointer" (click)="_authService.logoutUser()">Logout</a>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+
+

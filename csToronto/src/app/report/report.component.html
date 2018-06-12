@@ -1,0 +1,43 @@
+<div class="row pt-2 pl-2">
+    <div class="col-md-8" *ngIf="lat && lng">
+        <!-- mapclick: It registers the click plus internally pass the coordinates of the location on which we clicked -->
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="14" (mapClick)="clickedLocation($event)">
+            <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen">
+                <agm-info-window>
+                    <p>{{address}}</p>
+                </agm-info-window>
+            </agm-marker>
+        </agm-map>
+    </div>	
+    <div class="col-md-4">
+        <div>                            
+            <b>Template</b>
+            <checkbox-group [(ngModel)]="selectedItems">
+                <checkbox value="item1">Item 1</checkbox>
+                <checkbox value="item2">Item 2</checkbox>
+                <checkbox value="item3">Item 3</checkbox>
+                <checkbox value="item4">Item 4</checkbox>
+            </checkbox-group>
+            <p>Selected items - {{selectedItems | json}}</p>
+            
+            <b>Reactive</b>
+            <form [formGroup]="form" novalidate> 
+                <checkbox-group formControlName="items">
+                <checkbox value="item1">Item 1</checkbox>
+                <checkbox value="item2">Item 2</checkbox>
+                <checkbox value="item3">Item 3</checkbox>
+                <checkbox value="item4">Item 4</checkbox>
+                </checkbox-group>
+            </form>
+            <button (click)="form.reset()">Reset</button>
+            <p>Form - {{form.value | json}}</p>
+        </div> 
+        <div class="form-group">
+            <fieldset id="location" style="padding-bottom: 10px">
+                <legend>Click on map to locate</legend>	
+                <input type="text" name="address" size="50" value={{address}} placeholder="problem site" required>
+            </fieldset>
+        </div> 
+        <button id="report" class="btn btn-primary" type="submit" (click)="onSubmit()">Report</button>  
+    </div>	
+</div>
