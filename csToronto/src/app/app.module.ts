@@ -52,7 +52,7 @@ import { GeocodingService } from './geocoding.service';
     GeocodingService
     ],
 
-  bootstrap: [AppComponent, ReportComponent]
+  bootstrap: [AppComponent]
 })
 
 export class AppModule { }

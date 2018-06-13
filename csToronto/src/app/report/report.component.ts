@@ -1,17 +1,18 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { GeocodingService } from '../geocoding.service';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
-// import { CheckBoxGroupComponent  } from './checkbox-group/checkbox-group.component';
-// import { CheckBoxComponent } from './checkbox/checkbox.component';
+import { CheckboxGroupComponent } from '../checkbox-group/checkbox-group.component';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
 
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.css']
 })
-export class ReportComponent implements OnInit {
+
+export class ReportComponent {
 
   lat = 43.65;
   lng = -79.38;
@@ -27,8 +28,6 @@ export class ReportComponent implements OnInit {
               private _authService: AuthService,
               private _router: Router ) { }
 
-  ngOnInit() {
-  }
 
   clickedLocation(event) {
     // coords of the clickedLocation is passed with event object.
